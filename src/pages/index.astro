@@ -32,17 +32,20 @@ const base = import.meta.env.BASE_URL;
   <body>
     <main class="flex min-h-screen items-center justify-center bg-background px-6 py-16 text-foreground">
       <article class="w-full max-w-xl space-y-10">
-        <div class="space-y-3">
-          <h1 class="text-balance text-4xl font-black">
-            Yes, you can stop typing
-            <code class="rounded bg-muted px-2 py-1 text-3xl">npx</code>.
-          </h1>
-          <p class="text-lg font-semibold text-muted-foreground">
-            Congratulations on discovering <strong>pnpm</strong>. Here's how to
-            make your shell forget
-            <code class="rounded bg-muted px-1">npx</code> ever existed.
-          </p>
-        </div>
+        <header class="hero-header">
+          <div class="space-y-4">
+            <h1 class="text-balance text-5xl font-black tracking-tight">
+              Stop replacing
+              <span class="hero-mark">npx</span>
+              by hand.
+            </h1>
+            <p class="text-pretty text-lg font-semibold text-muted-foreground">
+              Paste the command exactly as the README wrote it. Your shell can
+              intercept <code class="rounded bg-muted px-1">npx</code> and run
+              <strong>pnpm dlx</strong> instead.
+            </p>
+          </div>
+        </header>
 
         <section class="space-y-3">
           <div class="flex items-center gap-3">
@@ -118,3 +121,44 @@ const base = import.meta.env.BASE_URL;
     </main>
   </body>
 </html>
+
+<style>
+  .hero-header {
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+    isolation: isolate;
+  }
+
+  .hero-header::before {
+    position: absolute;
+    inset: -1.25rem -1.25rem auto;
+    z-index: -1;
+    height: 13rem;
+    background:
+      radial-gradient(circle at 18% 28%, rgb(239 29 40 / 0.18), transparent 34%),
+      linear-gradient(135deg, rgb(0 0 0 / 0.08), transparent 55%);
+    border-radius: 1.75rem;
+    content: "";
+    transform: rotate(-1.5deg);
+  }
+
+  .hero-mark {
+    position: relative;
+    display: inline-block;
+    padding-inline: 0.08em;
+    font-family: var(--font-mono);
+  }
+
+  .hero-mark::after {
+    position: absolute;
+    right: 0.02em;
+    bottom: 0.16em;
+    left: 0.02em;
+    height: 0.16em;
+    background: #ef1d28;
+    content: "";
+    transform: rotate(-4deg);
+    transform-origin: left center;
+  }
+</style>
