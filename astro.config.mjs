@@ -3,8 +3,8 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://dafnik.github.io",
-  base: "/npx-pnpm-redirect",
+  site: "https://npx.dafnik.me",
+  base: "/",
   integrations: [preact()],
   vite: {
     plugins: [tailwindcss()],
