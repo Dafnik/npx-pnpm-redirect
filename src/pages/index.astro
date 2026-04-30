@@ -36,7 +36,10 @@ const base = import.meta.env.BASE_URL;
           <div class="space-y-4">
             <h1 class="text-balance text-5xl font-black tracking-tight">
               Stop replacing
-              <span class="hero-mark">npx</span>
+              <br/>
+              <span class="hero-mark typewriter" aria-label="npx">
+                <span class="typewriter-text" aria-hidden="true"></span>
+              </span>
               by hand.
             </h1>
             <p class="text-pretty text-lg font-semibold text-muted-foreground">
@@ -143,22 +146,135 @@ const base = import.meta.env.BASE_URL;
     transform: rotate(-1.5deg);
   }
 
-  .hero-mark {
-    position: relative;
-    display: inline-block;
-    padding-inline: 0.08em;
-    font-family: var(--font-mono);
+  .typewriter {
+    color: darkviolet;
+    min-width: 8ch;
+    white-space: nowrap;
   }
 
-  .hero-mark::after {
-    position: absolute;
-    right: 0.02em;
-    bottom: 0.16em;
-    left: 0.02em;
-    height: 0.16em;
-    background: #ef1d28;
-    content: "";
-    transform: rotate(-4deg);
-    transform-origin: left center;
+  .typewriter-text::before {
+    content: "npx";
+    animation: typewriter-text 5s steps(1, end) infinite;
   }
+
+  .typewriter-text::after {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.86em;
+    margin-left: 0.06em;
+    background: currentColor;
+    content: "";
+    transform: translateY(0.1em);
+    animation: typewriter-cursor 900ms steps(1, end) infinite;
+  }
+
+  @keyframes typewriter-text {
+    0%,
+    12% {
+      content: "npx";
+    }
+
+    15% {
+      content: "np";
+    }
+
+    18% {
+      content: "n";
+    }
+
+    21% {
+      content: "";
+    }
+
+    25% {
+      content: "p";
+    }
+
+    28% {
+      content: "pn";
+    }
+
+    31% {
+      content: "pnp";
+    }
+
+    34% {
+      content: "pnpm";
+    }
+
+    37% {
+      content: "pnpm ";
+    }
+
+    40% {
+      content: "pnpm d";
+    }
+
+    43% {
+      content: "pnpm dl";
+    }
+
+    46%,
+    60% {
+      content: "pnpm dlx";
+    }
+
+    64% {
+      content: "pnpm dl";
+    }
+
+    68% {
+      content: "pnpm d";
+    }
+
+    72% {
+      content: "pnpm ";
+    }
+
+    75% {
+      content: "pnpm";
+    }
+
+    78% {
+      content: "pnp";
+    }
+
+    81% {
+      content: "pn";
+    }
+
+    84% {
+      content: "p";
+    }
+
+    87% {
+      content: "";
+    }
+
+    91% {
+      content: "n";
+    }
+
+    94% {
+      content: "np";
+    }
+
+    97%,
+    100% {
+      content: "npx";
+    }
+  }
+
+  @keyframes typewriter-cursor {
+    0%,
+    48% {
+      opacity: 1;
+    }
+
+    49%,
+    100% {
+      opacity: 0;
+    }
+  }
+
 </style>
