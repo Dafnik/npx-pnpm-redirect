@@ -21,6 +21,7 @@ const base = import.meta.env.BASE_URL;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width" />
 
     <link rel="icon" href={`${base}/icon-light-32x32.png`} media="(prefers-color-scheme: light)" />
@@ -127,6 +128,10 @@ const base = import.meta.env.BASE_URL;
 
 <style>
   .hero-header {
+    --hero-glow: rgb(239 29 40 / 0.18);
+    --hero-shade: rgb(0 0 0 / 0.08);
+    --hero-typewriter: darkviolet;
+
     position: relative;
     display: grid;
     gap: 1.5rem;
@@ -139,15 +144,15 @@ const base = import.meta.env.BASE_URL;
     z-index: -1;
     height: 13rem;
     background:
-      radial-gradient(circle at 18% 28%, rgb(239 29 40 / 0.18), transparent 34%),
-      linear-gradient(135deg, rgb(0 0 0 / 0.08), transparent 55%);
+      radial-gradient(circle at 18% 28%, var(--hero-glow), transparent 34%),
+      linear-gradient(135deg, var(--hero-shade), transparent 55%);
     border-radius: 1.75rem;
     content: "";
     transform: rotate(-1.5deg);
   }
 
   .typewriter {
-    color: darkviolet;
+    color: var(--hero-typewriter);
     min-width: 8ch;
     white-space: nowrap;
   }
@@ -274,6 +279,14 @@ const base = import.meta.env.BASE_URL;
     49%,
     100% {
       opacity: 0;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .hero-header {
+      --hero-glow: rgb(239 29 40 / 0.24);
+      --hero-shade: rgb(255 255 255 / 0.08);
+      --hero-typewriter: #c084fc;
     }
   }
 
