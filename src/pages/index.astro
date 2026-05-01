@@ -120,12 +120,17 @@ const base = import.meta.env.BASE_URL;
           <ShellAIPrompt client:load />
         </section>
 
-        <div class="flex justify-between border-t pt-6 text-xs font-bold text-muted-foreground">
+        <div class="flex flex-col sm:flex-row gap-6 justify-between border-t pt-6 text-xs font-bold text-muted-foreground">
+          <div class="flex flex-col">
         <span>
           That's it. Four steps. You've earned a coffee.
         </span>
+            <span>
+                Like the site? Check it out on <a class="underline" href="https://github.com/Dafnik/npx-pnpm-redirect" rel="noopener" target="_blank">GitHub</a>.
+        </span>
+          </div>
           <span>
-            by <a href="https://dafnik.me" rel="noopener" target="_blank">Dafnik</a>
+            by <a class="underline" href="https://dafnik.me" rel="noopener" target="_blank">Dafnik</a>
           </span>
         </div>
       </article>
