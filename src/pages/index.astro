@@ -9,8 +9,8 @@ import {ShellAIPrompt} from "@/components/ShellAIPrompt.tsx";
 import {ShellLabel} from "@/components/ShellLabel.tsx";
 import {ShellRcFile} from "@/components/ShellRcFile.tsx";
 
-const title = "Stop Using npx";
-const description = "How to redirect npx to pnpm dlx in your shell";
+const title = "Stop replacing npx with pnpm dlx by hand.";
+const description = "Paste the command exactly as the README wrote it. Your shell can intercept npx and run pnpm dlx instead.";
 const verifyCommand = 'npx cowsay "I use pnpm now"';
 
 const base = import.meta.env.BASE_URL;
@@ -38,10 +38,12 @@ const base = import.meta.env.BASE_URL;
             <h1 class="text-balance text-5xl font-black tracking-tight">
               Stop replacing
               <br/>
+              <span class="inline-flex sm:block flex-col">
               <span class="hero-mark typewriter" aria-label="npx">
                 <span class="typewriter-text" aria-hidden="true"></span>
               </span>
               by hand.
+              </span>
             </h1>
             <p class="text-pretty text-lg font-semibold text-muted-foreground">
               Paste the command exactly as the README wrote it. Your shell can
