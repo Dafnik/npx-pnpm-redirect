@@ -1,0 +1,74 @@
+name: on branch push
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop
+
+# This allows a subsequently queued workflow run to interrupt previous runs
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: dafnik/setup-node-pnpm@v5
+        with:
+          install-ignore-scripts: true
+
+      - name: Style check
+        run: pnpm format:check
+
+  commitlint:
+    name: Commitlint Check
+    runs-on: ubuntu-latest
+    steps:
+      # Needed to get the commitlint config
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Commit lint
+        uses: dafnik/commitlint@v1
+
+  check:
+    name: Astro check
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: dafnik/setup-node-pnpm@v5
+        with:
+          install-ignore-scripts: true
+
+      - name: Style check
+        run: pnpm check
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: setup node and pnpm
+        uses: dafnik/setup-node-pnpm@v5
+        with:
+          install-ignore-scripts: true
+
+      - name: build page
+        run: pnpm build
+
+      - uses: actions/upload-artifact@v7
+        name: create build artifact
+        with:
+          name: npx-pnpm-redirect
+          path: ./dist/
+          retention-days: 1
