@@ -4,7 +4,6 @@ import {defineConfig} from 'astro/config';
 
 export default defineConfig({
   site: 'https://npx.dafnik.me',
-  base: '/',
   integrations: [preact()],
   vite: {
     plugins: [tailwindcss()],
