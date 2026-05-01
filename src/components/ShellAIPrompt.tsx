@@ -1,12 +1,8 @@
-import { CopyButton } from "@/components/CopyButton.tsx";
-import {
-  FUNCTION_CODE_FOR,
-  SHELL_CONFIG,
-  useShell,
-} from "@/components/core.ts";
+import {CopyButton} from '@/components/CopyButton.tsx';
+import {FUNCTION_CODE_FOR, SHELL_CONFIG, useShell} from '@/components/core.ts';
 
 export function ShellAIPrompt() {
-  const { shell } = useShell();
+  const {shell} = useShell();
   const cfg = SHELL_CONFIG[shell];
   const functionCode = FUNCTION_CODE_FOR[shell];
 
@@ -28,13 +24,9 @@ Don't overthink it.`;
 
   return (
     <div className="relative">
-      <div className="space-y-2 rounded-lg bg-muted p-5 pr-12">
-        <p className="mb-3 text-xs font-black uppercase text-muted-foreground">
-          Prompt
-        </p>
-        <p className="whitespace-pre-wrap font-mono text-sm font-bold leading-relaxed">
-          {prompt}
-        </p>
+      <div className="bg-muted space-y-2 rounded-lg p-5 pr-12">
+        <p className="text-muted-foreground mb-3 text-xs font-black uppercase">Prompt</p>
+        <p className="font-mono text-sm leading-relaxed font-bold whitespace-pre-wrap">{prompt}</p>
       </div>
       <CopyButton text={prompt} />
     </div>

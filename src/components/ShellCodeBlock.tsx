@@ -1,12 +1,8 @@
-import { CodeBlock } from "@/components/CodeBlock.tsx";
-import {
-  FUNCTION_CODE_FOR,
-  SHELL_CONFIG,
-  useShell,
-} from "@/components/core.ts";
+import {CodeBlock} from '@/components/CodeBlock.tsx';
+import {FUNCTION_CODE_FOR, SHELL_CONFIG, useShell} from '@/components/core.ts';
 
 export function ShellCodeBlock() {
-  const { shell } = useShell();
+  const {shell} = useShell();
   const cfg = SHELL_CONFIG[shell];
   const code = FUNCTION_CODE_FOR[shell];
 
@@ -18,24 +14,22 @@ export function ShellCodeBlock() {
         </p>
       )}
       <CodeBlock code={code} />
-      {shell === "fish" ? (
-        <p className="text-sm font-bold text-muted-foreground">
+      {shell === 'fish' ? (
+        <p className="text-muted-foreground text-sm font-bold">
           <strong className="text-foreground">
-            What does <code className="rounded bg-muted px-1">$argv</code> mean?
-          </strong>{" "}
-          Fish uses <code className="rounded bg-muted px-1">$argv</code> instead
-          of <code className="rounded bg-muted px-1">&quot;$@&quot;</code>. Same
-          idea, different dialect.
+            What does <code className="bg-muted rounded px-1">$argv</code> mean?
+          </strong>{' '}
+          Fish uses <code className="bg-muted rounded px-1">$argv</code> instead of{' '}
+          <code className="bg-muted rounded px-1">&quot;$@&quot;</code>. Same idea, different
+          dialect.
         </p>
       ) : (
-        <p className="text-sm font-bold text-muted-foreground">
+        <p className="text-muted-foreground text-sm font-bold">
           <strong className="text-foreground">
-            What does{" "}
-            <code className="rounded bg-muted px-1">&quot;$@&quot;</code> mean?
-          </strong>{" "}
-          It passes every argument you typed along to{" "}
-          <code className="rounded bg-muted px-1">pnpm dlx</code>. You&apos;re
-          welcome.
+            What does <code className="bg-muted rounded px-1">&quot;$@&quot;</code> mean?
+          </strong>{' '}
+          It passes every argument you typed along to{' '}
+          <code className="bg-muted rounded px-1">pnpm dlx</code>. You&apos;re welcome.
         </p>
       )}
     </div>
