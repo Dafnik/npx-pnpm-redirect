@@ -1,12 +1,12 @@
 {
   "assignees": ["Dafnik"],
-  "baseBranches": ["main"],
+  "baseBranchPatterns": ["main"],
   "commitBody": "See associated pull request for more information.",
   "enabledManagers": ["github-actions", "npm"],
   "extends": [
     "config:recommended",
     ":pinVersions",
-    "npm:unpublishSafe",
+    "security:minimumReleaseAgeNpm",
     ":preserveSemverRanges",
     ":rebaseStalePrs"
   ],
